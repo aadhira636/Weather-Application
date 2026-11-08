@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Web App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="app-header">
+      <h1>Weather Web App</h1>
+      <p class="app-subtitle">Real-time weather conditions and 48-hour timeline</p>
+    </header>
+
+    <section class="controls-section">
+      <form id="search-form" class="search-form" novalidate>
+        <div class="input-group">
+          <input 
+            type="text" 
+            id="location-input" 
+            class="location-input" 
+            placeholder="Enter location (e.g. New York, Hyderabad)" 
+            autocomplete="off"
+            aria-label="Location name"
+          >
+          <button type="submit" id="search-button" class="btn btn-primary">Search</button>
+          <button type="button" id="refresh-button" class="btn btn-secondary">⟳ Refresh</button>
+        </div>
+      </form>
+
+      <div id="error-message" class="error-banner hidden" role="alert" aria-live="assertive"></div>
+      
+      <div id="loading-indicator" class="loading-indicator hidden" aria-live="polite">
+        <div class="spinner"></div>
+        <span>Fetching live weather data...</span>
+      </div>
+    </section>
+
+    <main id="weather-display" class="weather-display hidden">
+      <section id="current-weather" class="current-weather-card">
+        <div class="current-header">
+          <div>
+            <h2 id="current-city" class="city-name">--</h2>
+            <p id="current-time" class="observation-time">Observation Time: --</p>
+          </div>
+          <div id="current-icon" class="current-icon" aria-hidden="true">☀️</div>
+        </div>
+
+        <div class="current-main">
+          <div class="temp-wrap">
+            <span id="current-temp" class="current-temp">--°C</span>
+            <span id="current-condition" class="current-condition">--</span>
+          </div>
+        </div>
+
+        <div class="current-details-grid">
+          <div class="detail-card">
+            <span class="detail-label">Wind Speed</span>
+            <span id="current-wind" class="detail-value">-- km/h</span>
+          </div>
+          <div class="detail-card">
+            <span class="detail-label">Precipitation Probability</span>
+            <span id="current-rain" class="detail-value">--%</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="timeline-section">
+        <div class="timeline-header">
+          <h2>Previous 24 Hours</h2>
+          <span class="scroll-hint">Scroll horizontally →</span>
+        </div>
+        <div id="previous-hours-container" class="hourly-scroll-container" tabindex="0" aria-label="Previous 24 hours weather"></div>
+      </section>
+
+      <section class="timeline-section">
+        <div class="timeline-header">
+          <h2>Upcoming 24 Hours</h2>
+          <span class="scroll-hint">Scroll horizontally →</span>
+        </div>
+        <div id="upcoming-hours-container" class="hourly-scroll-container" tabindex="0" aria-label="Upcoming 24 hours weather"></div>
+      </section>
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
